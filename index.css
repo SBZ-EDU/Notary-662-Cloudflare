@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Iransans", "Inter", ui-sans-serif, system-ui, sans-serif;
+  
+  --color-brand-blue-dark: #001a5c;
+  --color-brand-blue: #0f172a;
+  --color-brand-blue-light: #1e293b;
+  --color-brand-gold: #d3b574;
+  --color-brand-yellow: #f0c96a;
+}

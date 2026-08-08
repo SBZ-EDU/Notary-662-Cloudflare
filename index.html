@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="https://www.notary662th.ir/wp-content/uploads/2020/09/LFZ-lOGO-150x150.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>دفتر اسناد رسمی 662 تهران - دستیار هوشمند حقوقی و تنظیم سند</title>
+    <meta name="description" content="دستیار هوشمند حقوقی دفتر اسناد رسمی ۶۶۲ تهران، ابزاری قدرتمند برای متخصصان حقوقی و عموم مردم جهت تنظیم پیش‌نویس اسناد، تحقیق در موضوعات حقوقی و یافتن وکلای متخصص.">
+
+    <style>
+      @font-face {
+        font-family: 'Iransans';
+        font-weight: 400;
+        src: url('https://sevinsazeh.com/wp-content/uploads/2024/03/IRANSansWebFaNum.woff2') format('woff2'),
+             url('https://sevinsazeh.com/wp-content/uploads/2024/03/IRANSansWebFaNum.woff') format('woff');
+      }
+      @font-face {
+        font-family: 'Iransans';
+        font-weight: 700;
+        src: url('https://sevinsazeh.com/wp-content/uploads/2024/03/IRANSansWebFaNum_Bold.woff2') format('woff2'),
+             url('https://sevinsazeh.com/wp-content/uploads/2024/03/IRANSansWebFaNum_Bold.woff') format('woff');
+      }
+      @font-face {
+        font-family: 'Iransans';
+        font-weight: 900;
+        src: url('https://sevinsazeh.com/wp-content/uploads/2024/03/IRANSansWebFaNum_Black.woff2') format('woff2'),
+             url('https://sevinsazeh.com/wp-content/uploads/2024/03/IRANSansWebFaNum_Black.woff') format('woff');
+      }
+      @font-face {
+        font-family: 'Iransans';
+        font-weight: 500;
+        src: url('https://sevinsazeh.com/wp-content/uploads/2024/03/IRANSansWebFaNum_Medium.woff2') format('woff2'),
+             url('https://sevinsazeh.com/wp-content/uploads/2024/03/IRANSansWebFaNum_Medium.woff') format('woff');
+      }
+      body {
+        font-family: 'Iransans', 'Inter', sans-serif;
+        scroll-behavior: smooth;
+        background-color: #0f172a;
+        background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.05) 1px, transparent 0);
+        background-size: 20px 20px;
+      }
+      .font-inter {
+         font-family: 'Inter', sans-serif;
+      }
+      .animate-fade-in {
+        animation: fadeIn 0.5s ease-in-out;
+      }
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .strikethrough-animated {
+        color: #d3b574; /* gold */
+      }
+      .strikethrough-animated::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background-color: #d3b574;
+        transform: scaleX(0);
+        transform-origin: right;
+        animation: draw-strike 0.5s 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+      }
+
+      @keyframes draw-strike {
+        from { transform: scaleX(0); }
+        to { transform: scaleX(1); }
+      }
+      
+      /* Document Viewer Styles */
+      .document-page {
+        background-color: #ffffff;
+        color: #111827;
+        padding: 2.5rem;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        max-width: 8.5in;
+        min-height: 11in;
+        margin: 0 auto;
+      }
+      .document-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        border-bottom: 2px solid #e5e7eb; /* gray-200 */
+        padding-bottom: 1rem;
+        margin-bottom: 2rem;
+      }
+      .document-logo {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+      .document-logo img {
+        height: 3rem;
+        width: auto;
+      }
+      .document-logo span {
+        font-size: 1.125rem;
+        font-weight: 700;
+        color: #374151; /* gray-700 */
+      }
+      .document-header-info {
+        text-align: left;
+        font-size: 0.875rem;
+        color: #4b5563; /* gray-600 */
+      }
+      html[dir="rtl"] .document-header-info {
+        text-align: right;
+      }
+      .document-body .prose, .document-body {
+        color: #111827;
+        max-width: none;
+      }
+      .document-body h1, .document-body h2, .document-body h3, .document-body h4,
+      .document-body h5, .document-body h6 {
+        color: #111827 !important;
+        font-family: 'Iransans', 'Inter', sans-serif;
+      }
+      .document-body p, .document-body li, .document-body td, .document-body th {
+        color: #374151 !important; /* gray-700 */
+        line-height: 2;
+      }
+      html[dir="rtl"] .document-body p, html[dir="rtl"] .document-body li {
+        text-align: justify;
+      }
+      .document-body > div > *:first-child {
+        margin-top: 0;
+      }
+      .cta-pulse {
+        animation: pulse-light 2s infinite;
+      }
+      @keyframes pulse-light {
+        0%, 100% {
+          box-shadow: 0 0 0 0 rgba(211, 181, 116, 0.7);
+        }
+        70% {
+          box-shadow: 0 0 0 10px rgba(211, 181, 116, 0);
+        }
+      }
+       .animate-slide-up-fade-in {
+        animation: slideUpFadeIn 0.5s ease-out forwards;
+      }
+      @keyframes slideUpFadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>

@@ -1,0 +1,8 @@
+name = "notary-662"
+compatibility_date = "2024-01-01"
+pages_build_output_dir = "dist"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "notary_db"
+database_id = "b1baedf8-4d88-487a-ba94-0722db569db5"

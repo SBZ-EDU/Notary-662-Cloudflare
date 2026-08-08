@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notary 662 - RAG Test Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #0f172a; color: white; font-family: system-ui, -apple-system, sans-serif; }
+        .gold-border { border-color: #d4af37; }
+        .gold-text { color: #d4af37; }
+    </style>
+</head>
+<body class="p-4 sm:p-8">
+    <div class="max-w-4xl mx-auto space-y-6">
+        <header class="text-center space-y-2 border-b gold-border pb-6">
+            <h1 class="text-3xl font-bold gold-text">پنل تست موتور RAG - دفتر ۶۶۲</h1>
+            <p class="text-gray-400 text-sm">تست مستقیم مدل Llama 3 متصل به ۱۰۰ فایل PDF بانک اطلاعاتی</p>
+        </header>
+
+        <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 shadow-2xl">
+            <label class="block text-sm font-medium text-gray-300 mb-2">سوال خود را بپرسید (مثلاً در مورد صلح‌نامه):</label>
+            <div class="flex gap-2">
+                <input type="text" id="queryInput" placeholder="تایپ کنید..." 
+                       class="flex-grow bg-gray-900 border border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500 text-white">
+                <button onclick="sendQuery()" id="sendBtn" class="bg-yellow-600 hover:bg-yellow-500 text-white font-bold px-6 py-2 rounded-lg transition-all">
+                    ارسال
+                </button>
+            </div>
+        </div>
+
+        <div id="loading" class="hidden flex items-center justify-center space-x-2 py-4">
+            <div class="w-3 h-3 bg-yellow-500 rounded-full animate-bounce"></div>
+            <div class="w-3 h-3 bg-yellow-500 rounded-full animate-bounce [animation-delay:-.3s]"></div>
+            <div class="w-3 h-3 bg-yellow-500 rounded-full animate-bounce [animation-delay:-.5s]"></div>
+            <span class="mr-2 text-yellow-500 text-sm">در حال جستجو در اسناد PDF...</span>
+        </div>
+
+        <div id="resultBox" class="hidden bg-gray-900 p-6 rounded-xl border gold-border">
+            <h3 class="gold-text font-bold mb-4 border-b border-gray-700 pb-2">پاسخ هوش مصنوعی (RAG):</h3>
+            <div id="resultText" class="text-gray-200 leading-relaxed whitespace-pre-wrap"></div>
+        </div>
+    </div>
+
+    <script>
+        async function sendQuery() {
+            const query = document.getElementById('queryInput').value;
+            if (!query) return;
+
+            const btn = document.getElementById('sendBtn');
+            const loader = document.getElementById('loading');
+            const resultBox = document.getElementById('resultBox');
+            const resultText = document.getElementById('resultText');
+
+            btn.disabled = true;
+            loader.classList.remove('hidden');
+            resultBox.classList.add('hidden');
+            resultText.innerText = '';
+
+            try {
+                const response = await fetch('https://notary-662-sbz.pages.dev/api/generate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{ parts: [{ text: query }] }]
+                    })
+                });
+
+                const data = await response.json();
+                resultText.innerText = data.text || "پاسخی یافت نشد.";
+                resultBox.classList.remove('hidden');
+            } catch (error) {
+                resultText.innerText = "خطا در اتصال به سرور: " + error.message;
+                resultBox.classList.remove('hidden');
+            } finally {
+                btn.disabled = false;
+                loader.classList.add('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
